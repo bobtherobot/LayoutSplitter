@@ -3,15 +3,15 @@
 A layout splitter for web apps that need resizable panels.
 
 DIVs can have the following data-atts:
-- data-layout (required) (string) - "row" "col"
-- data-size (optional) (number | string for percent) - assume pixel when number, use "!00%" for percent vals
-- data-min (optional) (number | string for percent)
-- data-fixed (optional) - attaches panel to current position (e.g. a fixed-size righ-hand panel)
-- data-remember (optional) - remembers panels open/closed/position when page is reloaded
-- data-noresize (optional) - prevents resizing when exists
-- data-noscroll (optional) - prevents scrolling when exists
-- data-onresize (optional) (string) - funciton identifier as a string (e.g. "myFunc")
-- data-onresizecomplete (optional) (string) - funciton identifier as a string (e.g. "myFunc")
+- __data-layout__ (required) (string) - "row" "col"
+- __data-size__ (optional) (number | string for percent) - assume pixel when number, use "!00%" for percent vals
+- __data-min__ (optional) (number | string for percent)
+- __data-fixed__ (optional) - attaches panel to current position (e.g. a fixed-size righ-hand panel)
+- __data-remember__ (optional) - remembers panels open/closed/position when page is reloaded
+- __data-noresize__ (optional) - prevents resizing when exists
+- __data-noscroll__ (optional) - prevents scrolling when exists
+- __data-onresize__ (optional) (string) - funciton identifier as a string (e.g. "myFunc")
+- __data-onresizecomplete__ (optional) (string) - funciton identifier as a string (e.g. "myFunc")
 
 
 ### Example
