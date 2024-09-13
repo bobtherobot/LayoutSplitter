@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Layout Splitter</title>
+	
+<link href="LayoutSplitter.css" rel="stylesheet">
+<script src="LayoutSplitter.js"></script>
+<script>
+function myResizeHandler(){
+	//con sole.log("did resize");
+}
+</script>
+
+</head>
+<body>
+	
+<div data-layout="col">
+	<div class="soWeCanSee1" data-layout="row" data-scroll="true" data-size="100" data-noresize >
+		<div class="soWeCanSee2" data-layout="col" data-size="100" data-noresize>
+			A
+		</div>
+		<div class="soWeCanSee3" data-layout="col" data-size="500" data-onResize="myResizeHandler">
+			B<div class="lotsOcontent">
+				lot's O content dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+			</div>
+		</div>
+		<div class="soWeCanSee4" data-size="500" data-layout="col">
+			C
+		</div>
+		<div class="soWeCanSee4" data-size="500" data-layout="col">
+			C
+		</div>
+		<div class="soWeCanSee4" data-size="500" data-layout="col">
+			C
+		</div>
+	</div>
+	<div class="soWeCanSee2" data-layout="row" data-onResize="myResizeHandler">
+		<div class="soWeCanSee3" data-layout="col" data-scroll data-size="200">
+			D<div class="lotsOcontent">
+				lot's O content dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+				 dsf asdf asdf asd sadfas dfas dfasd fsadf asdfas dfas dfasd fsad fasdfas d fsadfas d
+			</div>
+		</div>
+		<div class="soWeCanSee4" data-layout="col">
+			E
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

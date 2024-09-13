@@ -1,0 +1,97 @@
+/* Important: The overall page needs to have a size, and the page margins and padding need to be zero'd so we can do some calculations ! */
+html, body {
+	height: 100%; /* required */
+	width: 100%; /* required */
+	padding : 0; /* required */
+	margin : 0; /* required */
+	overflow: hidden; /* can be helpful for pages that behave like apps (and not regular web pages that need scrolling) */
+	font-family : Helvetica, Arial, _sans;
+	font-size : 92%;
+}
+
+/* layout-mask is used as a "baseline" class for many of the componants that LayoutSplitter generates */
+.layout-base {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+    overflow : auto;
+}
+
+/* layout-mask is used to drag the splitter and prevent content below from dropping the "mouse move" signal */
+.layout-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10001; /* may need to adjust this if your content uses z-indexes higher thn this value*/
+    background-color : rgba(200, 0, 72, 0.09);
+}
+
+/* How the splitter looks */
+.layout-col {
+    position: absolute;
+    background-color: #cccccc;
+    z-index:900;
+    width: 1px; /* visually smaller than grabber */
+    height: 100%;
+}
+.layout-row {
+    position: absolute;
+    background-color: #cccccc;
+    z-index: 800;
+    height: 1px; /* visually smaller than grabber */
+    width: 100%;
+}
+
+/* How the splitter feels */
+.layout-col-grabber {
+    position: absolute;
+    /*background-color: rgb(207, 207, 207);*/
+    cursor: col-resize;
+    left : 0px;
+    width: 10px; /* larger than the visual representation */
+    height: 100%;
+}
+
+.layout-row-grabber {
+    position: absolute;
+    /*background-color: rgb(207, 207, 207);*/
+    cursor: row-resize;
+    top : 0px;
+    height: 10px; /* larger than the visual representation */
+    width: 100%;
+}
+
+
+/* ............................................................. */
+/* This stuff is/was used during development and by the examples */
+.lotsOcontent {
+    height : 800px;
+    background-color : rgba(125, 125, 125, 0.2);
+	padding-left : 10px;
+}
+
+.soWeCanSee0 {
+    background-color : rgba(142, 50, 200, 0.1);
+}
+
+.soWeCanSee1 {
+    background-color : rgba(255, 248, 1, 0.1);
+}
+
+.soWeCanSee2 {
+    background-color : rgba(0, 123, 255, 0.1);
+}
+
+.soWeCanSee3 {
+    background-color : rgba(0, 255, 39, 0.1);
+}
+
+.soWeCanSee4 {
+    background-color : rgba(255, 53, 0, 0.1);
+}
+
+
