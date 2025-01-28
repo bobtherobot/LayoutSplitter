@@ -8,10 +8,10 @@
     <title>LayoutSplitter</title>
 
 	<!-- Layout -->
-	<script src="layout.min.js"></script>
-    <link href="layout.min.css" rel="stylesheet">
-
-
+	<script src="src/layout.js"></script>
+	<!--<script src="src/layout-doesnt remember.js"></script>-->
+	
+    <link href="layout.css" rel="stylesheet">
 
     <script>
     	function didResize(obj){
@@ -19,8 +19,6 @@
     	}
     jbeeb.utils.Layout.addListener("globalResizeComplete", didResize, this);
     </script>
-
-    
 
 <style>
 html, body {
