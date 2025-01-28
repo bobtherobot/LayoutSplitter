@@ -1,0 +1,8 @@
+- move to store localStorage as:
+var LOCAL_STORAGE_KEY = location.href.replace(/[^a-zA-Z0-9]/g, "");
+
+- replace parseFloat's with "toNumber"
+
+function toNumber(val){
+        return Number(("" + val).replace(/[^0-9\.-]+/g, "") || "0") || parseInt(val, 10) || 0;
+    }

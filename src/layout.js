@@ -78,7 +78,7 @@ this.jbeeb.utils.Layout = (function() {
     var STATIC_TOP = "top";
     var STATIC_LEFT = "left";
     var STATIC_PX = "px";
-    var LOCAL_STORAGE_PREFIX = "layoutRemember_"
+    var LOCAL_STORAGE_KEY = location.href.replace(/[^a-zA-Z0-9]/g, "");
 
 
     var doc;
@@ -149,6 +149,11 @@ this.jbeeb.utils.Layout = (function() {
 
     }
 
+    function toNumber(val){
+        return Number(("" + val).replace(/[^0-9\.-]+/g, "") || "0") || parseInt(val, 10) || 0;
+    }
+
+
     /**
      * Description
      * @private 
@@ -156,7 +161,7 @@ this.jbeeb.utils.Layout = (function() {
      */
     function ripDoc() {
 
-		var retoreList = restore();
+		var retoreList = restore() || {};
 		var shouldReset = false;
 
 		var harvestInfo = {};
@@ -1091,10 +1096,10 @@ this.jbeeb.utils.Layout = (function() {
         var splitterElemStyle = obj.splitterElem.style;
         if (obj.row) {
             mouseStart = e.clientY;
-            startPos = parseFloat(splitterElemStyle.top);
+            startPos = toNumber(splitterElemStyle.top);
         } else {
             mouseStart = e.clientX;
-            startPos = parseFloat(splitterElemStyle.left);
+            startPos = toNumber(splitterElemStyle.left);
         }
 
     }
@@ -1223,7 +1228,7 @@ this.jbeeb.utils.Layout = (function() {
      */
     function resizePanel(elem, size) {
 
-        size = parseFloat(size);
+        size = toNumber(size);
 
         var obj = findObjFromElem(elem);
 
@@ -1685,7 +1690,7 @@ this.jbeeb.utils.Layout = (function() {
      */
     function parseNumUnits(val) {
 		if(typeof val == "string"){
-			val = parseFloat(val);
+			val = toNumber(val);
 		}
         return {
             num: Number(val) || 0,
@@ -1744,19 +1749,20 @@ this.jbeeb.utils.Layout = (function() {
     function remember(obj) {
 
         //if (obj.remember) {
-            //localStorage[LOCAL_STORAGE_PREFIX + obj.id] = (obj.row ? obj.h : obj.w) + "px";
+            //localStorage[LOCAL_STORAGE_KEY + obj.id] = (obj.row ? obj.h : obj.w) + "px";
 		//}
 		
-
+        var obj = {};
 		for (var i = 0; i < cells.length; i++) {
 			var item = cells[i];
 			//remember( cells[i] );
-			localStorage[LOCAL_STORAGE_PREFIX + item.id] = (item.row ? item.h : item.w) + "px";
+            obj[item.id] = (item.row ? item.h : item.w) + "px";
+			//localStorage[LOCAL_STORAGE_PREFIX + item.id] = (item.row ? item.h : item.w) + "px";
 		}
+
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(obj));
 		
     }
-
-    var ls_re = new RegExp("^" + LOCAL_STORAGE_PREFIX);
 
     /**
      * Description
@@ -1765,40 +1771,41 @@ this.jbeeb.utils.Layout = (function() {
      * @private 
      */
     function restore() {
-		var ret = {};
-        for (var prop in localStorage) {
-            if (ls_re.test(prop)) {
-                var id = prop.replace(ls_re, "");
-                var size = localStorage[prop];
-                // todo: on vertical, some resizes are null???
-
+        var ret = {};
+        var obj;
+        try {
+            obj = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+        } catch(err) {
+            // ignore
+        }
+        if(obj){
+            for (var prop in obj) {
+                var size = obj[prop];
+                // TODO: on vertical, some resizes are null???
+    
                 if (size) {
-
-					ret[id] = size;
-			
-					/*
-					var obj = findObjFromElem(id);
-
-					// HTML may have changed from what's in localStorage
-					if( ! amInit && obj ){
-						resizePanel(id, num);
-					}
-					*/
+    
+                    ret[prop] = size;
+            
+                    /*
+                    var obj = findObjFromElem(id);
+    
+                    // HTML may have changed from what's in localStorage
+                    if( ! amInit && obj ){
+                        resizePanel(id, num);
+                    }
+                    */
                 }
             }
-		}
+        }
+        
 		
 		return ret;
 	}
 	
 
     function resetRemember() {
-        for (var prop in localStorage) {
-            if (prop.match(ls_re)) {
-				localStorage.removeItem(prop)
-                //localStorage[prop] = null;
-            }
-        }
+        localStorage.removeItem(LOCAL_STORAGE_KEY);
     }
 
 
